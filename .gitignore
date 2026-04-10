@@ -1,0 +1,7 @@
+aios-core/
+node_modules/
+.vscode/
+dayse_files/
+selecto-dashboard/
+build.py
+*.png

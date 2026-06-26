@@ -254,8 +254,9 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--dark);
    SEÇÃO 3: SERVIÇOS
    ========================================== */
 .section-services { padding: 100px 0; background: var(--bg); }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 48px; }
+.services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 48px; }
 .service-card {
+  flex: 0 1 calc(25% - 18px); min-width: 220px;
   background: var(--white); padding: 36px 28px; border-radius: var(--radius);
   box-shadow: var(--shadow); transition: var(--transition);
   border: 1px solid transparent; position: relative; overflow: hidden;
@@ -758,42 +759,93 @@ textarea { resize: vertical; min-height: 80px; }
    RESPONSIVE
    ========================================== */
 @media (max-width: 992px) {
-  .vsl-grid { grid-template-columns: 1fr; gap: 48px; }
+  .vsl-grid { grid-template-columns: 1fr; gap: 40px; }
   .vsl-copy { text-align: center; }
   .vsl-mini-proof { margin-left: auto; margin-right: auto; }
   .vsl-cta-group { align-items: center; }
   .vsl-urgency { justify-content: center; }
-  .bio-inner { grid-template-columns: 1fr; gap: 48px; }
-  .bio-image-wrapper { max-width: 400px; margin: 0 auto; }
-  .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+  .bio-inner { grid-template-columns: 1fr; gap: 40px; }
+  .bio-image-wrapper { max-width: 380px; margin: 0 auto; }
+  .booking-inner { grid-template-columns: 1fr; gap: 40px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
+  .service-card { flex: 0 1 calc(33.333% - 16px); }
 }
 @media (max-width: 768px) {
+  /* Navbar */
   .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 280px; background: #1c0d0d; flex-direction: column; justify-content: center; gap: 24px; padding: 40px; box-shadow: -8px 0 32px rgba(0,0,0,0.4); transition: right 0.3s ease; }
   .nav-links.open { right: 0; }
   .nav-links a { color: rgba(255,255,255,0.85); }
   .nav-links a:hover { color: var(--rose-light); }
   .hamburger { display: flex; z-index: 1100; }
-  .testi-card { flex: 0 0 calc(50% - 12px); }
-  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-  .booking-form-wrapper { padding: 32px 24px; }
-  .bio-stats { gap: 20px; }
-  .services-grid { grid-template-columns: 1fr; }
-  .vsl-trust-bar { gap: 10px; }
+
+  /* Hero */
+  .section-vsl { padding-top: 100px; }
+  .vsl-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .vsl-sub { font-size: 0.95rem; }
+  .vsl-trust-bar { flex-wrap: wrap; gap: 8px; justify-content: center; }
   .trust-sep { display: none; }
+  .btn-hero { font-size: 1rem; padding: 16px 28px; }
+
+  /* Bio */
+  .bio-stats { flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+  .bio-stats .stat { width: 100%; max-width: 260px; }
+
+  /* Serviços */
+  .service-card { flex: 0 1 calc(50% - 12px); min-width: 0; padding: 28px 20px; }
+
+  /* Portfólio */
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* Depoimentos */
+  .testi-card { flex: 0 0 calc(50% - 12px); }
+
+  /* Formulário */
+  .form-row { grid-template-columns: 1fr; }
+  .booking-form-wrapper { padding: 28px 20px; }
+  .booking-info { text-align: center; }
+  .booking-contact { justify-content: center; }
+
+  /* Rodapé */
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Modal */
+  .pmodal-panel { width: 96%; max-height: 92vh; overflow-y: auto; }
   .pmodal-body { grid-template-columns: 1fr; }
-  .pmodal-left { border-right: none; border-bottom: 1px solid var(--light-gray); padding: 32px 24px; }
-  .pmodal-right { padding: 24px; }
+  .pmodal-left { border-right: none; border-bottom: 1px solid var(--light-gray); padding: 28px 20px; }
+  .pmodal-right { padding: 20px; }
 }
 @media (max-width: 480px) {
+  /* Cards de serviço em coluna única no celular pequeno */
+  .service-card { flex: 0 1 100%; min-width: 0; }
+
+  /* Portfólio em 1 coluna */
+  .portfolio-grid { grid-template-columns: 1fr; }
+
+  /* Depoimentos */
   .testi-card { flex: 0 0 100%; }
-  .vsl-badges { gap: 12px; }
-  .badge { font-size: 0.78rem; }
+
+  /* Hero */
+  .vsl-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
   .vsl-mini-proof { flex-wrap: wrap; justify-content: center; }
   .logo-tagline { display: none; }
-  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-  .tcarousel-btn { width: 40px; height: 40px; }
+
+  /* Seções — padding menor */
+  .section-vsl,
+  .section-bio,
+  .section-services,
+  .section-portfolio,
+  .section-testimonials,
+  .section-booking,
+  .section-faq { padding-top: 64px; padding-bottom: 64px; }
+
+  /* Tipografia */
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+  .section-sub { font-size: 0.9rem; }
+
+  /* Botão hero ocupa 100% */
+  .btn-hero { width: 100%; justify-content: center; }
+
+  /* Agendamento */
+  .btn-primary.btn-full { font-size: 0.95rem; padding: 15px 24px; }
 }

@@ -135,7 +135,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--dark);
 }
 
 /* COLUNA COPY */
-.vsl-copy { }
+.vsl-copy { display: flex; flex-direction: column; }
 .vsl-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-light); margin-bottom: 20px; display: block; }
 .vsl-title {
   font-family: var(--font-serif); font-size: clamp(2.6rem, 5vw, 4.2rem);
@@ -149,7 +149,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--dark);
 .mini-proof-item { text-align: center; padding: 0 20px; }
 .mini-proof-item:first-child { padding-left: 0; }
 .mini-proof-item:last-child { padding-right: 0; }
-.proof-num { display: block; font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--rose-light); line-height: 1; }
+.proof-num { display: block; font-family: var(--font-sans); font-size: 1.3rem; font-weight: 700; color: var(--rose-light); line-height: 1; }
 .proof-label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
 .proof-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.1); }
 
@@ -280,7 +280,7 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--dark);
    ========================================== */
 .section-portfolio { padding: 100px 0; background: var(--white); }
 .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.portfolio-item { }
+.portfolio-item { display: flex; flex-direction: column; }
 .portfolio-img-wrap {
   position: relative; border-radius: var(--radius); overflow: hidden;
   aspect-ratio: 1/1; cursor: pointer;

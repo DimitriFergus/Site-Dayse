@@ -611,18 +611,111 @@ textarea { resize: vertical; min-height: 80px; }
 }
 
 /* ==========================================
-   FOOTER
+   FOOTER REDESENHADO
    ========================================== */
-.footer { background: #1a0e0e; padding: 64px 0 0; }
-.footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.footer-brand .logo-dt { background: var(--rose); }
-.footer-brand .logo-name { color: white; }
-.footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; margin-top: 12px; }
-.footer-links h4, .footer-contact h4 { color: white; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
-.footer-links a, .footer-contact a { display: block; color: rgba(255,255,255,0.5); font-size: 0.9rem; text-decoration: none; margin-bottom: 8px; transition: var(--transition); }
-.footer-links a:hover, .footer-contact a:hover { color: var(--rose-light); }
-.footer-bottom { text-align: center; padding: 20px; }
-.footer-bottom p { color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+.footer {
+  background: linear-gradient(160deg, #0f0606 0%, #1e0c0c 50%, #0f0606 100%);
+  padding: 80px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Orbs animados de fundo */
+.footer-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+}
+.footer-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(229,158,158,0.16) 0%, transparent 70%);
+  top: -150px; left: -120px;
+  animation: fOrb1 9s ease-in-out infinite;
+}
+.footer-orb-2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(245,200,200,0.1) 0%, transparent 70%);
+  bottom: 0; right: -80px;
+  animation: fOrb2 11s ease-in-out infinite;
+}
+.footer-orb-3 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(201,122,122,0.08) 0%, transparent 70%);
+  top: 45%; left: 52%;
+  animation: fOrb3 13s ease-in-out infinite;
+}
+@keyframes fOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 50px) scale(1.08); }
+}
+@keyframes fOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -35px) scale(0.94); }
+}
+@keyframes fOrb3 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(35px, -45px); }
+  66% { transform: translate(-25px, 25px); }
+}
+
+/* Layout interno */
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr 1fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo do rodapé */
+.footer-logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 14px; }
+.footer-logo-svg { width: 44px; height: 44px; flex-shrink: 0; }
+.footer-logo-text { display: flex; flex-direction: column; gap: 2px; }
+.footer-logo-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.9); }
+.footer-logo-sub { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.footer-desc { color: rgba(255,255,255,0.4); font-size: 0.84rem; line-height: 1.65; }
+
+/* Ícones sociais */
+.footer-social { display: flex; gap: 10px; margin-top: 22px; }
+.footer-social-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(229,158,158,0.1);
+  border: 1px solid rgba(229,158,158,0.18);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--rose-light); text-decoration: none;
+  transition: var(--transition);
+}
+.footer-social-btn:hover {
+  background: var(--rose); border-color: var(--rose);
+  color: white; transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(229,158,158,0.35);
+}
+
+/* Headings e links das colunas */
+.footer-links h4, .footer-services h4, .footer-contact h4 {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px;
+}
+.footer-links a, .footer-services a, .footer-contact a {
+  display: block; color: rgba(255,255,255,0.4);
+  font-size: 0.87rem; text-decoration: none;
+  margin-bottom: 9px; transition: var(--transition);
+}
+.footer-links a:hover, .footer-services a:hover, .footer-contact a:hover {
+  color: var(--rose-light); padding-left: 6px;
+}
+
+/* Barra inferior */
+.footer-bottom {
+  text-align: center; padding: 24px;
+  position: relative; z-index: 1;
+}
+.footer-bottom p { color: rgba(255,255,255,0.25); font-size: 0.77rem; }
+.footer-bottom-sub { margin-top: 5px; color: rgba(255,255,255,0.15) !important; font-size: 0.72rem !important; }
 
 /* WHATSAPP FLOAT */
 .whatsapp-float {
@@ -767,7 +860,7 @@ textarea { resize: vertical; min-height: 80px; }
   .bio-inner { grid-template-columns: 1fr; gap: 40px; }
   .bio-image-wrapper { max-width: 380px; margin: 0 auto; }
   .booking-inner { grid-template-columns: 1fr; gap: 40px; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer-brand { grid-column: 1 / -1; }
   .service-card { flex: 0 1 calc(33.333% - 16px); }
 }
@@ -808,6 +901,10 @@ textarea { resize: vertical; min-height: 80px; }
 
   /* Rodapé */
   .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-social { justify-content: center; }
+  .footer-logo-link { justify-content: center; }
+  .footer-desc { text-align: center; }
+  .footer-links, .footer-services, .footer-contact { text-align: center; }
 
   /* Modal */
   .pmodal-panel { width: 96%; max-height: 92vh; overflow-y: auto; }
